@@ -14,6 +14,9 @@
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
+				<Linker>
+					<Add library="ws2_32" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/CarpetaCodeBlocks" prefix_auto="1" extension_auto="1" />
@@ -32,7 +35,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Instrucciones.txt" />
 		<Unit filename="main.cpp" />
+		<Unit filename="pedido.html" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
