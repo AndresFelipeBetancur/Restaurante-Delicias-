@@ -1,0 +1,8 @@
+Instrucciones para poder en funcionamiento el programa.
+
+Debido a las limitaciones tecnicas del editor de texto,
+se deben seguir las siguientes instrucciones:
+
+1. Click derecho proyecto, Build options, Linker settings,
+En “Link libraries” AGREGAR: ws2_32
+
