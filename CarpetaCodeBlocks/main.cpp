@@ -21,6 +21,10 @@
 
 using namespace httplib;
 
+void menu() {
+
+}
+
 int main() {
     Server svr;
 
@@ -33,6 +37,6 @@ int main() {
         res.set_content("OK", "text/plain");
     });
 
-    std::cout << "Servidor encendido en puerto 8080" << std::endl;
+    std::cout << "Servidor encendido en puerto 8080 para conexion movil." << std::endl;
 
     svr.listen("0.0.0.0", 8080);}
