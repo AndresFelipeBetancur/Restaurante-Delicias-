@@ -13,13 +13,9 @@
 // permitiendo la comunicación entre dispositivos móviles y el sistema del restaurante mediante solicitudes POST.
 // Mysql para la base de datos.
 
-
 #define _WIN32_WINNT 0x0A00
 #include <winsock2.h>
 #include <ws2tcpip.h>
-#include <iostream>
-#include "httplib.h"-
-
 #include <iostream>
 #include "httplib.h"
 
@@ -28,10 +24,8 @@ using namespace httplib;
 int main() {
     Server svr;
 
-    // Ruta principal
-    svr.Get("/", [](const Request& req, Response& res) {
-        res.set_content("Servidor funcionando", "text/plain");
-    });
+
+    svr.set_mount_point("/", "./web");
 
     // Ruta pedidos
     svr.Post("/pedido", [](const Request& req, Response& res) {
@@ -39,7 +33,6 @@ int main() {
         res.set_content("OK", "text/plain");
     });
 
-    svr.listen("0.0.0.0", 8080);
+    std::cout << "Servidor encendido en puerto 8080" << std::endl;
 
-    return 0;
-}
+    svr.listen("0.0.0.0", 8080);}

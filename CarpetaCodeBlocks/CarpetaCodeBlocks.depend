@@ -1,9 +1,7 @@
 # depslib dependency file v1.0
-1775596185 source:c:\users\abeta\onedrive - universidad del valle\escritorio\carpetaprincipal\restaurante-delicias-\carpetacodeblocks\main.cpp
+1775603372 source:c:\users\abeta\onedrive - universidad del valle\escritorio\carpetaprincipal\restaurante-delicias-\carpetacodeblocks\main.cpp
 	<winsock2.h>
 	<ws2tcpip.h>
-	<iostream>
-	"httplib.h"
 	<iostream>
 	"httplib.h"
 
