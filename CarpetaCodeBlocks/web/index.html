@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pedido Restaurante</title>
+    <title>Restaurante Ricuras</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <h2>Hacer Pedido</h2>
+    
+    <header>
+            <h1>Restaurante Delicias</h1>
+    </header>
+    
+    <main>
+        <div id="contenedorPrincipal">
 
-    <input type="text" id="pedido" placeholder="Ej: 2 hamburguesas">
-    <button onclick="enviarPedido()">Enviar</button>
+            <button id="contenedorAdm">
+                <h2>Administracion</h2>
+                <p>Administracion del sistema.</p>
+            </button>
 
-    <script>
-        function enviarPedido() {
-            const pedido = document.getElementById("pedido").value;
+            <button id="contenedorEmp" >
+                <h2>Empleados</h2>
+                <p>Funciones de empleado.</p>
+            </button>
 
-            fetch("http://192.168.1.34:8080/pedido", {
-                method: "POST",
-                body: pedido
-            })
-            .then(res => res.text())
-            .then(data => alert(data))
-            .catch(err => alert("Error: " + err));
-        }
-    </script>
+            <button id="contenedorMes" >
+                <h2>Mesas</h2>
+                <p> Aqui puedes realizar tus pedidos! :)
+                </p>
+            </button>
+        
+        </div>
+    </main>
+    
+
+    
 </body>
 </html>

@@ -9,9 +9,9 @@
 //Descripcion: Este proyecto es un sistema de gestion de restaurante,
 // el cual permite a los usuarios realizar pedidos,
 // a los empleados gestionar los pedidos y a los administradores gestionar el menu y las mesas.
-// Se utiliz� la librer�a cpp-httplib para implementar un servidor HTTP en C++,
-// permitiendo la comunicaci�n entre dispositivos m�viles y el sistema del restaurante mediante solicitudes POST.
-// Mysql para la base de datos.
+// Se utilizo la libreria cpp-httplib para implementar un servidor HTTP en C++,
+// permitiendo la comunicacion entre dispositivos moviles y el sistema del restaurante mediante solicitudes POST.
+// vectores para la almacenacion de datos.
 
 #define _WIN32_WINNT 0x0A00
 #include <winsock2.h>
