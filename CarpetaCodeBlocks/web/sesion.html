@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Sesion</title>
+    <link rel="stylesheet" href="styles/sesion.css">
+</head>
+<body>
+    <h1>Inicia sesion.</h1>
+
+    <form id="formulario" action="/pedido" method="POST">
+        
+        <div class="contenedorEntrada">
+            <label for="Identificacion">Digite su numero de cedula.</label>
+            <input type="text" name="Identificacion" placeholder="Ingrese su cedula">
+        </div>
+        
+        <div class="contenedorEntrada">
+            <label for="Identificacion">Digite su contraseña.</label>
+            <input type="text" name="Contraseña" placeholder="Ingrese su contraseña">
+        </div>
+        
+
+        <button type="submit">Enviar</button>
+
+        <div id="infoCuenta">
+            <p>¿No tienes una cuenta?   </p>
+
+            <a href=""> Crea una</a>
+        </div>
+
+        
+    </form>
+
+</body>
+</html>

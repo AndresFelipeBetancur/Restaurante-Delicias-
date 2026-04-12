@@ -32,10 +32,22 @@ int main() {
 
     svr.set_mount_point("/", "./web");
 
+    //Ruta principal
     svr.Post("/pedido", [](const Request& req, Response& res) {
         std::cout << "Pedido: " << req.body << std::endl;
         res.set_content("OK", "text/plain");
     });
+
+    //Ruta mesas
+    svr.Get("/mesas", [](const Request& req, Response& res) {
+    res.set_redirect("/mesas.html");
+    });
+
+    //Ruta inicio de sesion
+    svr.Get("/sesion", [](const Request& req, Response& res) {
+    res.set_redirect("/sesion.html");
+    });
+
 
     std::cout << "Servidor encendido en puerto 8080 para conexion movil." << std::endl;
 
@@ -47,6 +59,5 @@ int main() {
    
 
     server_thread.join();
-
     return 0;
 }

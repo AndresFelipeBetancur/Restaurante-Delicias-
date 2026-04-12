@@ -1,4 +1,4 @@
-Instrucciones para poder en funcionamiento el programa.
+Instrucciones para poner en funcionamiento el programa.
 
 EN CODE BLOCKS
 
@@ -10,6 +10,7 @@ En �Link libraries� AGREGAR: ws2_32
 
 EN VISUAL STUDIO CODE
 
-1.Para ejecutar el programa se debe usar el comando: ./app
-2.Para visualizar la aplicacion en el navegador se debe ingresar al enlace: http://localhost:8080
+1.Antes de ejecutar compilar con el comando: g++ main.cpp -o app -lws2_32
+2.Para ejecutar el programa se debe usar el comando: ./app
+3.Para visualizar la aplicacion en el navegador se debe ingresar al enlace: http://localhost:8080
 

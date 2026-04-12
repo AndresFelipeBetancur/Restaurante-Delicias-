@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    
     <title>Restaurante Ricuras</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="styles/estilos.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     
@@ -13,17 +15,17 @@
     <main>
         <div id="contenedorPrincipal">
 
-            <button id="contenedorAdm">
-                <h2>Administracion</h2>
+            <button id="contenedorAdm" onclick="window.location.href='/sesion'" >
+                <h2>Gestion</h2>
                 <p>Administracion del sistema.</p>
             </button>
 
-            <button id="contenedorEmp" >
+            <button id="contenedorEmp" onclick="window.location.href='/sesion'">
                 <h2>Empleados</h2>
                 <p>Funciones de empleado.</p>
             </button>
 
-            <button id="contenedorMes" >
+            <button onclick="window.location.href='/mesas'" id="contenedorMes" >
                 <h2>Mesas</h2>
                 <p> Aqui puedes realizar tus pedidos! :)
                 </p>
