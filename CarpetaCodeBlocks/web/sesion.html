@@ -5,31 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario Sesion</title>
     <link rel="stylesheet" href="styles/sesion.css">
+
+    <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("error") === "1") {
+        alert("Credenciales incorrectas ❌");
+    }
+    </script>
+
 </head>
 <body>
     <h1>Inicia sesion.</h1>
 
-    <form id="formulario" action="/pedido" method="POST">
+    <form id="formulario" action="/inicioSesion" method="POST">
         
         <div class="contenedorEntrada">
             <label for="Identificacion">Digite su numero de cedula.</label>
-            <input type="text" name="Identificacion" placeholder="Ingrese su cedula">
+            <input required type="text" name="identificacion" placeholder="Ingrese su cedula">
         </div>
         
         <div class="contenedorEntrada">
             <label for="Identificacion">Digite su contraseña.</label>
-            <input type="text" name="Contraseña" placeholder="Ingrese su contraseña">
+            <input required type="text" name="contrasena" placeholder="Ingrese su contraseña">
         </div>
         
 
         <button type="submit">Enviar</button>
-
-        <div id="infoCuenta">
-            <p>¿No tienes una cuenta?   </p>
-
-            <a href=""> Crea una</a>
-        </div>
-
+        
+        
+        
         
     </form>
 

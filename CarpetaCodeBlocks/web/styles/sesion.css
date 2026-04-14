@@ -48,17 +48,7 @@ label {
     padding: 2px;
 }
 
-#infoCuenta {
-    width: 100%;
-    height: 20px;
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    
-} a {
-    margin-left: 5px;
-}
 
 .contenedorEntrada {
     height: 10%;

@@ -23,9 +23,11 @@
 using namespace httplib;
 using namespace std;
 
+string usuarioAdmin[2] = {"Admin", "12345"};
 
-
-
+void usuarios() {
+    cout<<"Hola";
+}
 
 int main() {
     Server svr;
@@ -35,7 +37,8 @@ int main() {
     //Ruta principal
     svr.Post("/pedido", [](const Request& req, Response& res) {
         std::cout << "Pedido: " << req.body << std::endl;
-        res.set_content("OK", "text/plain");
+
+        res.set_content("OK mi perro", "text/plain");
     });
 
     //Ruta mesas
@@ -45,8 +48,20 @@ int main() {
 
     //Ruta inicio de sesion
     svr.Get("/sesion", [](const Request& req, Response& res) {
-    res.set_redirect("/sesion.html");
+        res.set_redirect("/sesion.html");
     });
+    //Aqui se reciben los datos del formulario sesion
+    svr.Post("/inicioSesion", [](const Request& req, Response& res) {
+        std::string cedula = req.get_param_value("identificacion");
+        std::string pass = req.get_param_value("contrasena");
+
+
+        if (cedula == usuarioAdmin[0] && pass == usuarioAdmin[1]) {
+            res.set_redirect("/admin.html");
+        } else {
+            res.set_redirect("/sesion.html?error=1");
+        }
+        });
 
 
     std::cout << "Servidor encendido en puerto 8080 para conexion movil." << std::endl;

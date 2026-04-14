@@ -67,6 +67,13 @@ p {
     padding: 10px;
 }
 
+#bienvenida {
+    display: none;
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: center;
+    
+}
 
 @media (max-width: 481px) {
   h1 {
@@ -78,6 +85,16 @@ p {
 } p {
     font-size: 15px;
     text-align: center;
+}
+
+ 
+ #contenedorAdm,
+ #contenedorEmp {
+    display: none;
+    
+} #bienvenida {
+    display: block;
+
 }
   
 }
