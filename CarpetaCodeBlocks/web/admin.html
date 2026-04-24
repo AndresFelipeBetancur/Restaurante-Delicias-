@@ -5,18 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administracion</title>
     <link rel="stylesheet" href="styles/admin.css">
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const msg = params.get("msg");
+
+        if (msg) {
+            alert(msg); // muestra el mensaje real
+            window.history.replaceState({}, document.title, "/admin.html");
+        }
+    </script>
 </head>
 <body>
 
     <h1>Administracion del sistema</h1>
 
+
     <div id="contenedorPrincipal">
-        <button class="boton">
+        <button class="boton" onclick="window.location.href='/agregarUsuario'">
             <h2>Agregar</h2>
             <p>Agrega un nuevo empleado al sistema.</p>
+            
         </button>
         
-        <button class="boton">
+        <button class="boton" onclick="window.location.href='/verUsuario'">
             <h2>Visualizar</h2>
             <p>Visualiza los empleados del sistema.</p>
         </button>

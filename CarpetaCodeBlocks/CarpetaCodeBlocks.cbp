@@ -37,7 +37,6 @@
 		</Compiler>
 		<Unit filename="Instrucciones.txt" />
 		<Unit filename="main.cpp" />
-		<Unit filename="pedido.html" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creacion de usuario</title>
+    <link rel="stylesheet" href="styles/agregarUsuario.css">
+</head>
+<body>
+    <h1>Agrega un usuario al sistema.</h1>
+
+    <form id="formulario" action="/nuevoUsuario" method="POST">
+        
+        <div class="contenedorEntrada">
+            <label for="Identificacion">Digite su numero de cedula.</label>
+            <input required type="text" name="identificacion" placeholder="Ingrese su cedula">
+        </div>
+        
+        <div class="contenedorEntrada">
+            <label for="Identificacion">Digite su nombre completo.</label>
+            <input required type="text" name="nombre" placeholder="Ingrese su nombre">
+        </div>
+
+        <div class="contenedorEntrada">
+            <label for="Identificacion">Digite su correo electronico.</label>
+            <input required type="text" name="correo" placeholder="nombre@ejemplo.com">
+        </div>
+
+        <div class="contenedorEntrada">
+            <label for="Identificacion">Digite su contraseña.</label>
+            <input required type="text" name="contrasena" placeholder="Ingrese su contraseña">
+        </div>
+        
+
+        <button type="submit">Enviar</button>
+        
+        
+        
+        
+    </form>
+</body>
+</html>

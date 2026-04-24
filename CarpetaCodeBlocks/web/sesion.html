@@ -10,6 +10,7 @@
     const params = new URLSearchParams(window.location.search);
     if (params.get("error") === "1") {
         alert("Credenciales incorrectas ❌");
+        window.history.replaceState({}, document.title, "/admin.html");
     }
     </script>
 
