@@ -32,18 +32,23 @@
             <p>Visualiza los empleados del sistema.</p>
         </button>
         
-        <button class="boton">
-            <h2>Eliminar</h2>
-            <p>Deshabilita un usuario del sistema.</p>
+        <button class="boton" onclick="window.location.href='/eliminarU'">
+            <h2>Eliminar / Habilitar</h2>
+            <p>Deshabilita o habilita un usuario del sistema.</p>
         </button>
-        
-        <button class="boton">
+         
+        <button class="boton" onclick="window.location.href='/actualizarU'">
             <h2>Actualizar</h2>
             <p>Actualiza las credenciales de un usuario del sistema.</p>
         </button>
 
     </div>
 
+    <div id="contenedorBoton">
+        <button id="boton" onclick="window.location.href='./'">
+            <h2>Regresar</h2>
+        </button>
+    </div>
 
 </body>
 </html>

@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add library="ws2_32" />
@@ -25,6 +26,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -36,6 +38,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="Instrucciones.txt" />
+		<Unit filename="include/Usuarios.h" />
 		<Unit filename="main.cpp" />
 		<Extensions />
 	</Project>

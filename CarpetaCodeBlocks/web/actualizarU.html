@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/actualizarU.css">
+    <title>Elimina un usuario del sistema</title>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const msg = params.get("msg");
+
+        if (msg) {
+            alert(msg); 
+            window.history.replaceState({}, document.title, "/actualizarU.html");
+        }
+    </script>
+
+</head>
+<body>
+    <h1>Actualiza a un usuario.</h1>
+    
+
+    <form id="formulario" action="/actualizarUsuario" method="POST">
+
+        
+        <div class="contenedorEntrada">
+            <label for="Identificacion"><b>Digite La cedula</b></label>
+            <input required type="text" name="cedula" placeholder="Ingrese la cedula del usuario.">
+        </div>
+
+
+        <div class="contenedorEntrada">
+            <label for="Identificacion"><b>Digite el nuevo nombre</b></label>
+            <input required type="text" name="nombre" placeholder="Ingrese el nuevo nombre del usuario.">
+        </div>
+
+        <div class="contenedorEntrada">
+            <label for="Identificacion"><b>Digite el nuevo correo</b></label>
+            <input required type="text" name="correo" placeholder="Ingrese el nuevo correo del usuario.">
+        </div>
+
+        <div class="contenedorEntrada">
+            <label for="Identificacion"><b>Digite La nueva contraseña</b></label>
+            <input required type="text" name="pass" placeholder="Ingrese la nueva contraseña del usuario.">
+        </div>
+        
+
+        <button type="submit">Actualizar</button>
+        
+        
+    </form>
+
+    <div id="contenedorBoton">
+        <button id="boton" onclick="window.location.href='/administracion'">
+            <h2>Regresar</h2>
+        </button>
+    </div>
+
+</body>
+</html>

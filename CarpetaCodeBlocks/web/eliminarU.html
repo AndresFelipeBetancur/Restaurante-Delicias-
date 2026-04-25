@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/eliminarU.css">
+    <title>Elimina un usuario del sistema</title>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("error") === "1") {
+            alert("Usuario no encontrado... ❌");
+            window.history.replaceState({}, document.title, "/eliminar.html");
+        }
+    </script>
+
+</head>
+<body>
+    <h1>Deshabilita o habilita a un usuario.</h1>
+    <p>Ingresa la cedula del usuario que desees habilitar o deshabilitar.</p>
+
+    <form id="formulario" action="/eliminarUsuario" method="POST">
+
+        
+        <div id="contenedorEntrada">
+            <label for="Identificacion">Digite La cedula</label>
+            <input required type="text" name="cedula" placeholder="Ingrese la cedula del usuario.">
+        </div>
+        
+
+        <button type="submit">Deshabilidar / Habilitar</button>
+        
+        
+    </form>
+
+    <div id="contenedorBoton">
+        <button id="boton" onclick="window.location.href='/administracion'">
+            <h2>Regresar</h2>
+        </button>
+    </div>
+
+</body>
+</html>

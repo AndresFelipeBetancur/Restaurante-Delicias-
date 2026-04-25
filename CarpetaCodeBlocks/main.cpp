@@ -66,6 +66,52 @@ int main() {
         res.set_content("OK", "text/plain");
     });
     
+
+    //RUTAS DE USUARIO -------------------------------------------------
+
+    //RUTAS ACTUALIZAR USUARIO
+    svr.Get("/actualizarU", [](const Request& req, Response& res) {
+        res.set_redirect("/actualizarU.html");
+    });
+
+    svr.Post("/actualizarUsuario", [&](const Request& req, Response& res) {
+        
+        string cedula = req.get_param_value("cedula");
+        string nombre = req.get_param_value("nombre");
+        string correo = req.get_param_value("correo");
+        string pass = req.get_param_value("pass");
+        
+        if(Usuarios::BuscarCedula(cedula,usuarios)) {
+            Usuarios::actualizar(cedula,nombre,correo,pass,usuarios);
+            res.set_redirect("/administracion?msg=Usuario+actualizado!");
+        } else {
+            res.set_redirect("/actualizarU.html?msg=Este+usuario+no+existe.");
+        }
+        
+    });
+
+
+
+    
+
+    //RUTAS ELIMINAR / DESHABILITAR USUARIO
+    svr.Post("/eliminarUsuario", [&](const Request& req, Response& res) {
+    
+    std::string cedula = req.get_param_value("cedula");
+
+    if (u.BuscarCedula(cedula, usuarios)) {
+        Usuarios::eliminarUsuario(cedula, usuarios);
+        res.set_redirect("/admin.html?msj=y");
+    } else {
+        res.set_redirect("/eliminarU.html?error=1");
+    }
+    });
+
+    svr.Get("/eliminarU", [](const Request& req, Response& res) {
+    res.set_redirect("/eliminarU.html");
+    });
+
+    //RUTA VISUALIZAR USUARIOS
     svr.Get("/verUsuario", [](const Request& req, Response& res) {
     string html = "<h1 style='text-align:center;'>Usuarios</h1>"
               "<table style='margin:auto; border:4px solid black; border-collapse:collapse;'>"
@@ -89,20 +135,30 @@ int main() {
 
     html += "</table>";
 
+    html += "<div style='text-align:center; margin-top:20px;'>"
+        "<a href='/administracion'>"
+        "<button style='border: solid 3px; width: 10%; height: 70px;'>Regresar</button>"
+        "</a>"
+        "</div>";
+
     res.set_content(html, "text/html"); 
     });
 
+    //RUTAS PARA AGREGAR USUARIOS
     //Aqui se reciben los datos del nuevo usuario y se envian a la funcion crear usuario
-    svr.Post("/nuevoUsuario", [](const Request& req, Response& res) {
+    svr.Post("/nuevoUsuario", [&](const Request& req, Response& res) {
         string cedula = req.get_param_value("identificacion");
         string nombre = req.get_param_value("nombre");
         string correo = req.get_param_value("correo");
         string pass = req.get_param_value("contrasena");
         
-        agregarU(cedula,nombre,correo,pass);
-
-        res.set_redirect("/administracion?msg=Creado+Correctamente");
-
+        if(u.BuscarCedula(cedula,usuarios)) {
+            res.set_redirect("/administracion?msg=Este+Usuario+ya+existe");
+        } else {
+            agregarU(cedula,nombre,correo,pass);
+            res.set_redirect("/administracion?msg=Creado+Correctamente");
+        }
+        
     });
 
     //Ruta usuario/agregar
@@ -116,17 +172,20 @@ int main() {
     }
     });
 
-    //Ruta usuario/agregar
+  
     svr.Get("/agregarUsuario", [](const Request& req, Response& res) {
     res.set_redirect("/agregarUsuario.html");
     });
 
+    //RUTAS DE MESAS
     //Ruta mesas
     svr.Get("/mesas", [](const Request& req, Response& res) {
     res.set_redirect("/mesas.html");
     });
 
-    //Ruta inicio de sesion
+
+    
+    //Rutas de inicio de sesion
     svr.Get("/sesion", [](const Request& req, Response& res) {
         res.set_redirect("/sesion.html");
     });
@@ -143,7 +202,8 @@ int main() {
         }
         });
 
-
+    
+    //ESTRICTAMENTE DE LA LIBRERIA 
     std::cout << "Servidor encendido en puerto 8080 para conexion movil." << std::endl;
 
     // Ejecutar servidor en hilo separado
