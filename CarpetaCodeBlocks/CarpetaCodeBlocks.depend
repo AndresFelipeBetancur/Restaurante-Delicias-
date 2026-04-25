@@ -1,9 +1,12 @@
 # depslib dependency file v1.0
-1775603372 source:c:\users\abeta\onedrive - universidad del valle\escritorio\carpetaprincipal\restaurante-delicias-\carpetacodeblocks\main.cpp
+1777144958 source:c:\users\abeta\onedrive - universidad del valle\escritorio\carpetaprincipal\restaurante-delicias-\carpetacodeblocks\main.cpp
 	<winsock2.h>
 	<ws2tcpip.h>
 	<iostream>
 	"httplib.h"
+	<thread>
+	<vector>
+	"include/Usuarios.h"
 
 1775592546 c:\users\abeta\onedrive - universidad del valle\escritorio\carpetaprincipal\restaurante-delicias-\carpetacodeblocks\httplib.h
 	<io.h>
@@ -96,4 +99,8 @@
 	<brotli/decode.h>
 	<brotli/encode.h>
 	<zstd.h>
+
+1777144234 c:\users\abeta\onedrive - universidad del valle\escritorio\carpetaprincipal\restaurante-delicias-\carpetacodeblocks\include\usuarios.h
+	<iostream>
+	<vector>
 
