@@ -7,6 +7,17 @@ se deben seguir las siguientes instrucciones:
 
 1. Click derecho proyecto, Build options, Linker settings,
 En Link libraries AGREGAR: ws2_32
+2. Asegurate de tener instalado  "MinGW" en caso de que no esa asi,
+ve a este enlace: https://sourceforge.net/projects/mingw/
+3. Una vez instalado ve a settings -> compiler -> En selected compiler elige: GNU GCC Compiler,
+Entra a Toolchain executables -> En compilers installation directory coloca -> C:\MinGW
+Por ultimo da click en Auto-detect y guarda con OK.
+4. Ahora puedes compilar el programa, pero una vez lo ejecutes te aparecera una notificacion 
+para darle al programa acceso a las redes locales, da click en permitir.
+5. En caso de que no te aparezca el mensaje para dar permisos de acceso a la red publica ve a,
+firewall de windows -> permitir una caracteristica -> busca: carpeta code blocks y activa sus
+casillas.
+6. Disfruta del programa :)
 
 EN VISUAL STUDIO CODE
 
