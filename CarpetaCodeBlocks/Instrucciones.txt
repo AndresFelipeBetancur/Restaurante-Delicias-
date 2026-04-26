@@ -7,8 +7,8 @@ se deben seguir las siguientes instrucciones:
 
 1. Click derecho proyecto, Build options, Linker settings,
 En Link libraries AGREGAR: ws2_32
-2. Asegurate de tener instalado  "MinGW" en caso de que no esa asi,
-ve a este enlace: https://sourceforge.net/projects/mingw/
+2. Asegurate de tener instalado  "MinGW-w64" en caso de que no esa asi,
+ve a este enlace: winlibs.com y descargalo donde dice: AYUDA NO SE QUE DESCARGA ELEGIR -> DESCARGALO AQUI.
 3. Una vez instalado ve a settings -> compiler -> En selected compiler elige: GNU GCC Compiler,
 Entra a Toolchain executables -> En compilers installation directory coloca -> C:\MinGW
 Por ultimo da click en Auto-detect y guarda con OK.
@@ -20,6 +20,12 @@ casillas.
 6. Disfruta del programa :)
 
 EN VISUAL STUDIO CODE
+
+-1.Se debe tener instalado MinGW, su instalacion se explica ne la linea 11.
+
+0.Debes agregar g++ al path de windows, ve a win + R -> escribe sysdm.cpl -> ve a opciones avanzadas
+-> variables de entorno -> en variable sdel sistema busca path y dale doble click -> click en nuevo
+-> agrega: C:\mingw64\bin
 
 1.Antes de ejecutar compilar con el comando: g++ main.cpp -o app -lws2_32
 2.Para ejecutar el programa se debe usar el comando: ./app
