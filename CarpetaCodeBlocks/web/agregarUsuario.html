@@ -13,17 +13,17 @@
         
         <div class="contenedorEntrada">
             <label for="Identificacion">Digite su numero de cedula.</label>
-            <input required type="text" name="identificacion" placeholder="Ingrese su cedula">
+            <input pattern="[0-9]{10} minlength="6" required type="text" name="identificacion" placeholder="Ingrese su cedula">
         </div>
         
         <div class="contenedorEntrada">
             <label for="Identificacion">Digite su nombre completo.</label>
-            <input required type="text" name="nombre" placeholder="Ingrese su nombre">
+            <input minlength="15" required type="text" name="nombre" placeholder="Ingrese su nombre">
         </div>
 
         <div class="contenedorEntrada">
             <label for="Identificacion">Digite su correo electronico.</label>
-            <input required type="text" name="correo" placeholder="nombre@ejemplo.com">
+            <input minlength="10" required type="mail" name="correo" placeholder="nombre@ejemplo.com">
         </div>
 
         <div class="contenedorEntrada">
