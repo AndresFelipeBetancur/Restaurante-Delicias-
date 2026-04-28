@@ -16,12 +16,12 @@
 
 </head>
 <body>
-    <h1>Inicia sesion.</h1>
+    <h1>Inicia sesion admin.</h1>
 
     <form id="formulario" action="/inicioSesion" method="POST">
         
         <div class="contenedorEntrada">
-            <label for="Identificacion">Digite su numero de cedula.</label>
+            <label for="Identificacion">Digite el codigo de identificacion del usuario administrador.</label>
             <input required type="text" name="identificacion" placeholder="Ingrese su cedula">
         </div>
         
@@ -37,6 +37,13 @@
         
         
     </form>
+
+    <div id="contenedorBoton">
+        <button id="boton" onclick="window.location.href='./'">
+            <h2>Regresar</h2>
+        </button>
+    </div>
+
 
 </body>
 </html>

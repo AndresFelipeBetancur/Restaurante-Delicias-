@@ -43,12 +43,25 @@ label {
     align-items: center;
     width: 60%;
     min-height: 370px;
-  
+
     border: solid 3px;
     padding: 2px;
 }
 
+#contenedorBoton {
+    width: 100%;
+    margin-top: 20px;
+    
+    display: flex;
+    justify-content: center;
 
+}
+
+#boton {
+    border: solid 3px;
+    width: 10%;
+    height: 70px;
+}
 
 .contenedorEntrada {
     height: 10%;
