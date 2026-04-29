@@ -8,56 +8,26 @@
 </head>
 <body>
     <h1>Mesas</h1>
-    <p class="etiquetaEstado">Por favor ingresa el codigo de tu mesa :)</p>
-    <div id="contenedorCodigo">
-        <input type="text" placeholder="Codigo mesa: ASD123">
+
+    <form id="formulario" action="/" method="POST">
+        
+        <div class="contenedorEntrada">
+            <label for="codigo">Digite el codigo de su mesa.</label>
+            <input required type="text" name="codigo" placeholder="Ingrese codigo de mesa">
+        </div>
+        
+        <button type="submit">Ingresar</button>
+        
+        
+        
+        
+    </form>
+
+    <div id="contenedorBoton">
+        <button id="boton" onclick="window.location.href='./'">
+            <h2>Regresar</h2>
+        </button>
     </div>
-
-    <!--
-    <div id="contenedorMesas">
-
-        <button class="mesas">
-            <h2>Mesa #1</h2>
-            
-        </button>
-
-        <button class="mesas">
-            <h2>Mesa #2</h2>
-            
-        </button>
-
-        <button class="mesas">
-            <h2>Mesa #3</h2>
-            
-        </button>
-
-        <button class="mesas">
-            <h2>Mesa #4</h2>
-            
-        </button>
-
-        <button class="mesas">
-            <h2>Mesa #5</h2>
-            
-        </button>
-
-        <button class="mesas">
-            <h2>Mesa #6</h2>
-            
-        </button>
-
-        <button class="mesas">
-            <h2>Mesa #7</h2>
-            
-        </button>
-
-        <button class="mesas">
-            <h2>Mesa #8</h2>
-            
-        </button>
-
-    </div>
-    -->
 
 </body>
 </html>
