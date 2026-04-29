@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Sesion</title>
+    <link rel="stylesheet" href="styles/sesionE.css">
+
+    <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("error") === "1") {
+        alert("Credenciales incorrectas ❌");
+        window.history.replaceState({}, document.title, "/admin.html");
+    }
+    </script>
+
+</head>
+<body>
+    <h1>Inicia sesion admin.</h1>
+
+    <form id="formulario" action="/inicioSesionE" method="POST">
+        
+        <div class="contenedorEntrada">
+            <label for="Identificacion">Digite el codigo de identificacion del empleado.</label>
+            <input required type="text" name="identificacion" placeholder="Ingrese su cedula">
+        </div>
+        
+        <div class="contenedorEntrada">
+            <label for="Identificacion">Digite su contraseña.</label>
+            <input required type="text" name="contrasena" placeholder="Ingrese su contraseña">
+        </div>
+        
+
+        <button type="submit">Enviar</button>
+        
+        
+        
+        
+    </form>
+
+    <div id="contenedorBoton">
+        <button id="boton" onclick="window.location.href='./'">
+            <h2>Regresar</h2>
+        </button>
+    </div>
+
+
+</body>
+</html>

@@ -45,7 +45,7 @@ class Usuarios
         bool Getestado() { return estado; }
         void Setestado(bool val) { estado = val; }
         
-        //Otras funciones de usuario
+        //Otros metodos de usuario
 
         static bool actualizar(string id_buscar, string nuevoNombre, string nuevoCorreo, string nuevaPass, vector<Usuarios>& usuarios) {
         for(int i = 0; i < usuarios.size(); i++) {
@@ -75,6 +75,21 @@ class Usuarios
         }
         return false;
         }
+
+
+        static bool loguearUsuario(string id_buscar, string pass, vector<Usuarios>& usuarios) {
+        for(int i = 0; i < usuarios.size(); i++) {
+            if(usuarios[i].Getcedula() == id_buscar && 
+                usuarios[i].Getcontrasena() == pass &&
+                usuarios[i].Getestado()) {
+                return true;      
+        }
+        }
+        return false;
+        }
+
+
+
 
     protected:
 
