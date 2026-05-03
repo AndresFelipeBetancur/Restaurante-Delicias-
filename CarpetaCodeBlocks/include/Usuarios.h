@@ -46,6 +46,24 @@ class Usuarios
         void Setestado(bool val) { estado = val; }
         
         //Otros metodos de usuario
+        
+        //Funcion Agregar usuario
+        static bool agregarU(string cedula, string nombre, string correo, string pass, vector<Usuarios>& usuarios) {
+    
+            if(BuscarCedula(cedula, usuarios)) {
+                return false;
+            }
+
+            bool estado = true;
+
+            Usuarios nuevo(cedula, nombre, correo, pass, estado);
+
+            usuarios.push_back(nuevo);
+
+            return true;
+        }
+
+
 
         static bool actualizar(string id_buscar, string nuevoNombre, string nuevoCorreo, string nuevaPass, vector<Usuarios>& usuarios) {
         for(int i = 0; i < usuarios.size(); i++) {

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creacion de elemento del menu</title>
+    <link rel="stylesheet" href="styles/agregarMenu.css">
+</head>
+<body>
+    <h1>Agrega un elemento al menu.</h1>
+
+    <form id="formulario" action="/nuevoMenu" method="POST">
+        
+        <div class="contenedorEntrada">
+            <label for="Identificacion">Digite el nombre del producto.</label>
+            <input minlength="2" required type="text" name="nombre" placeholder="Ingrese el nombre">
+        </div>
+
+        <div class="contenedorEntrada">
+            <label for="Identificacion">Ingrese la categoria a la que pertenece el producto.</label>
+            <input minlength="6" required type="mail" name="categoria" placeholder="Comida/Bebida/Postre">
+        </div>
+
+        <div class="contenedorEntrada">
+            <label for="Identificacion">Ingrese el precio del producto</label>
+            <input required type="number" name="precio" placeholder="Ingrese el precio">
+        </div>
+
+        <div class="contenedorEntrada">
+            <label for="Identificacion">Ingrese una descripcion del producto</label>
+            <input required type="text" name="descripcion" placeholder="Ingrese la descripcion">
+        </div>
+        
+
+        <button type="submit">Enviar</button>
+        
+        
+        
+        
+    </form>
+
+
+    <div id="contenedorBoton">
+        <button id="boton" onclick="window.location.href='/menu'">
+            <h2>Regresar</h2>
+        </button>
+    </div>
+
+</body>
+</html>

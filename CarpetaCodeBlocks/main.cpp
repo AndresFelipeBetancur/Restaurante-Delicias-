@@ -7,10 +7,11 @@
 //Version: 2.7
 //Descripcion: Este proyecto es un sistema de gestion de restaurante,
 // el cual permite a los usuarios realizar pedidos,
-// a los empleados gestionar los pedidos y a los administradores gestionar el menu y las mesas.
+// a los empleados gestionar los pedidos el menu y las mesas.
 // Se utilizo la libreria cpp-httplib para implementar un servidor HTTP en C++,
 // permitiendo la comunicacion entre dispositivos moviles y el sistema del restaurante mediante solicitudes POST.
-// vectores para la almacenacion de datos.
+// vectores para la almacenacion de datos y un uso de estructura de datos primitivo(array) con el objetivo
+// de satisfacer el requerimiento del proyecto.
 
 #define _WIN32_WINNT 0x0A00
 #include <winsock2.h>
@@ -21,34 +22,25 @@
 #include <thread> 
 #include <vector>
 #include "include/Usuarios.h"
-
+#include "include/Menu.h"
 
 using namespace httplib;
 using namespace std;
 
-//USUARIOS ------------------------------------------------------
+//IMPORTACIONES ---------------------------------------------------------
+//USUARIOS 
 Usuarios u;
+//MENU
+Menu m;
 
+//VECTORES DE OBJETOS ----------------------------------------------------
 vector<Usuarios> usuarios;
+vector<Menu> productos;
+
 
 //Usuario administrador del sistema, es unico y solo la entidad tiene acceso.
 string usuarioAdmin[2] = {"Admin", "12345"};
 
-//Funcion Agregar usuario
-
-
-
-void agregarU(string cedula,string nombre,string correo,string pass){
-    
-    if(Usuarios::BuscarCedula(cedula, usuarios)) {
-        cout << "Ya existe un usuario con el ID\n";
-        return;
-    }
-    //activo de forma predeterminada
-    bool estado = true;
-    Usuarios u(cedula, nombre, correo, pass, estado);
-    usuarios.push_back(u);
-}
 
 //Rutas ------------------------------------------------------------------
 
@@ -64,9 +56,103 @@ int main() {
 
         res.set_content("OK", "text/plain");
     });
+    //RUTAS DE MENU ----------------------------------------------------
+
+
+    //RUTA VISUALIZAR menu
+    svr.Get("/verMenu", [&](const Request& req, Response& res) {
+
+    string html = "<h1 style='text-align:center;'>Menu del Restaurante</h1>";
+
+    // COMIDAS
+    html += "<h2>Comidas</h2>";
+    html += "<table border='1' style='margin:auto;'>"
+            "<tr>"
+            "<th>Codigo</th>"
+            "<th>Nombre</th>"
+            "<th>Precio</th>"
+            "<th>Descripcion</th>"
+            "</tr>";
+
+    for(auto &m : productos){
+        if(m.Getcategoria() == "Comida"){
+            html += "<tr>"
+                    "<td>" + to_string(m.Getcodigo()) + "</td>"
+                    "<td>" + m.Getnombre() + "</td>"
+                    "<td>" + to_string(m.Getprecio()) + "</td>"
+                    "<td>" + m.Getdescripcion() + "</td>"
+                    "</tr>";
+        }
+    }
+
+    html += "</table><br><br>";
+    html += "<h2>Bebidas</h2>";
+    html += "<table border='1' style='margin:auto;'>";
+
+    for(auto &m : productos){
+        if(m.Getcategoria() == "Bebida"){
+            html += "<tr>"
+                    "<td>" + to_string(m.Getcodigo()) + "</td>"
+                    "<td>" + m.Getnombre() + "</td>"
+                    "<td>" + to_string(m.Getprecio()) + "</td>"
+                    "<td>" + m.Getdescripcion() + "</td>"
+                    "</tr>";
+        }
+    }
+
+    html += "</table><br><br>";
     
+    html += "<h2>Postres</h2>";
+    html += "<table border='1' style='margin:auto;'>";
+
+    for(auto &m : productos){
+        if(m.Getcategoria() == "Postre"){
+            html += "<tr>"
+                    "<td>" + to_string(m.Getcodigo()) + "</td>"
+                    "<td>" + m.Getnombre() + "</td>"
+                    "<td>" + to_string(m.Getprecio()) + "</td>"
+                    "<td>" + m.Getdescripcion() + "</td>"
+                    "</tr>";
+        }
+    }
+
+    html += "</table>";
+
+    res.set_content(html, "text/html"); 
+    });
+
+    svr.Post("/nuevoMenu", [&](const Request& req, Response& res) {
+        
+        int codigo = 0;
+        string nombre = req.get_param_value("nombre");
+        string categoria = req.get_param_value("categoria");
+        int precio = stoi(req.get_param_value("precio"));
+        string descripcion = req.get_param_value("descripcion");
+        
+        Menu::agregarM(nombre,categoria,precio,descripcion,productos);
+        res.set_redirect("/menu?msg=Creado+Correctamente");
+        
+    });
+
+    svr.Get("/agregarMenu", [](const Request& req, Response& res) {
+    res.set_redirect("/agregarMenu.html");
+    });
+
+    svr.Get("/menu", [](const Request& req, Response& res) {
+    res.set_redirect("/menu.html");
+    });
+
+
+
+
+    //RUTAS DE MESAS ---------------------------------------------------
+    //Aqui deberian estar las rutas de nicolas y juan manuel
+
 
     //RUTAS DE EMPLEADOS -----------------------------------------------
+
+    
+
 
     svr.Get("/SesionE", [](const Request& req, Response& res) {
         res.set_redirect("/sesionE.html");
@@ -84,6 +170,10 @@ int main() {
         }
         });
 
+
+        //Falta pedidos menu y facturas
+
+    
 
 
 
@@ -173,13 +263,11 @@ int main() {
         string correo = req.get_param_value("correo");
         string pass = req.get_param_value("contrasena");
         
-        if(u.BuscarCedula(cedula,usuarios)) {
-            res.set_redirect("/administracion?msg=Este+Usuario+ya+existe");
-        } else {
-            agregarU(cedula,nombre,correo,pass);
+        if(Usuarios::agregarU(cedula,nombre,correo,pass,usuarios)) {
             res.set_redirect("/administracion?msg=Creado+Correctamente");
+        } else {
+            res.set_redirect("/administracion?msg=Este+Usuario+ya+existe");
         }
-        
     });
 
     //Ruta usuario/agregar

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="styles/menu.css">
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const msg = params.get("msg");
+
+        if (msg) {
+            alert(msg); // muestra el mensaje real
+            window.history.replaceState({}, document.title, "/menu.html");
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Menu del restaurante</h1>
+
+
+    <div id="contenedorPrincipal">
+        <button class="boton" onclick="window.location.href='/agregarMenu'">
+            <h2>Agregar</h2>
+            <p>Agrega un nuevo elemento al menu.</p>
+            
+        </button>
+        
+        <button class="boton" onclick="window.location.href='/verMenu'">
+            <h2>Visualizar</h2>
+            <p>Visualiza los elementos del menu.</p>
+        </button>
+        
+        <button class="boton" onclick="window.location.href='/'">
+            <h2>Eliminar / Habilitar</h2>
+            <p>Deshabilita o habilita un elemento del menu.</p>
+        </button>
+         
+        <button class="boton" onclick="window.location.href='/'">
+            <h2>Actualizar</h2>
+            <p>Actualiza un elemento del menu.</p>
+        </button>
+
+    </div>
+
+    <div id="contenedorBoton">
+        <button id="boton" onclick="window.location.href='./empleados.html'">
+            <h2>Regresar</h2>
+        </button>
+    </div>
+
+</body>
+</html>
