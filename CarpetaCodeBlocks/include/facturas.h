@@ -5,9 +5,9 @@
 #include <vector>
 
 using namespace std;
-class facturas{
+class Facturas{
     public:
-        facturas(){
+        Facturas(){
             estado = true;
         }
 

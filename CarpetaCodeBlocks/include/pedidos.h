@@ -6,9 +6,9 @@
 
 using namespace std;
 
-class pedidos{
+class Pedidos{
     public:
-        pedidos(){
+        Pedidos(){
             estado = true;
         }
 
