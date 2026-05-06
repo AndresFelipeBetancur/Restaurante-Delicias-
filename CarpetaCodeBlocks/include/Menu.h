@@ -79,7 +79,7 @@ class Menu {
                      string descripcion, vector<Menu>& menu) {
 
             bool estado = true;
-
+            
             int codigo = menu.size() + 1;
 
             Menu nuevo(codigo, nombre, categoria, precio, descripcion, estado);

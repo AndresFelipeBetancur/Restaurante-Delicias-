@@ -62,68 +62,74 @@ int main() {
     //RUTA VISUALIZAR menu
     svr.Get("/verMenu", [&](const Request& req, Response& res) {
 
+    string encabezado = "<tr>"
+                        "<th>Codigo</th>"
+                        "<th>Nombre</th>"
+                        "<th>Precio</th>"
+                        "<th>Descripcion</th>"
+                        "</tr>";
+
     string html = "<h1 style='text-align:center;'>Menu del Restaurante</h1>";
 
     // COMIDAS
-    html += "<h2>Comidas</h2>";
-    html += "<table border='1' style='margin:auto;'>"
-            "<tr>"
-            "<th>Codigo</th>"
-            "<th>Nombre</th>"
-            "<th>Precio</th>"
-            "<th>Descripcion</th>"
-            "</tr>";
+    html += "<h2 style='text-align:center;'>Comidas</h2>";
+    html += "<table border='1' style='margin:auto; border-collapse:collapse;'>" + encabezado;
 
-    for(auto &m : productos){
-        if(m.Getcategoria() == "Comida"){
+    for (auto &m : productos) {
+        if (m.Getcategoria() == "Comida") {
             html += "<tr>"
                     "<td>" + to_string(m.Getcodigo()) + "</td>"
                     "<td>" + m.Getnombre() + "</td>"
-                    "<td>" + to_string(m.Getprecio()) + "</td>"
+                    "<td>$" + to_string(m.Getprecio()) + "</td>"
                     "<td>" + m.Getdescripcion() + "</td>"
                     "</tr>";
         }
     }
-
     html += "</table><br><br>";
-    html += "<h2>Bebidas</h2>";
-    html += "<table border='1' style='margin:auto;'>";
 
-    for(auto &m : productos){
-        if(m.Getcategoria() == "Bebida"){
+    // BEBIDAS
+    html += "<h2 style='text-align:center;'>Bebidas</h2>";
+    html += "<table border='1' style='margin:auto; border-collapse:collapse;'>" + encabezado;
+
+    for (auto &m : productos) {
+        if (m.Getcategoria() == "Bebida") {
             html += "<tr>"
                     "<td>" + to_string(m.Getcodigo()) + "</td>"
                     "<td>" + m.Getnombre() + "</td>"
-                    "<td>" + to_string(m.Getprecio()) + "</td>"
+                    "<td>$" + to_string(m.Getprecio()) + "</td>"
                     "<td>" + m.Getdescripcion() + "</td>"
                     "</tr>";
         }
     }
-
     html += "</table><br><br>";
-    
-    html += "<h2>Postres</h2>";
-    html += "<table border='1' style='margin:auto;'>";
 
-    for(auto &m : productos){
-        if(m.Getcategoria() == "Postre"){
+    // POSTRES
+    html += "<h2 style='text-align:center;'>Postres</h2>";
+    html += "<table border='1' style='margin:auto; border-collapse:collapse;'>" + encabezado;
+
+    for (auto &m : productos) {
+        if (m.Getcategoria() == "Postre") {
             html += "<tr>"
                     "<td>" + to_string(m.Getcodigo()) + "</td>"
                     "<td>" + m.Getnombre() + "</td>"
-                    "<td>" + to_string(m.Getprecio()) + "</td>"
+                    "<td>$" + to_string(m.Getprecio()) + "</td>"
                     "<td>" + m.Getdescripcion() + "</td>"
                     "</tr>";
         }
     }
+    html += "</table><br><br>";
 
-    html += "</table>";
+    // Botón regresar
+    html += "<div style='text-align:center; margin-top:20px;'>"
+            "<a href='/menu'><button style='border: solid 3px; width:10%; height:70px;'>Regresar</button></a>"
+            "</div>";
 
-    res.set_content(html, "text/html"); 
-    });
+    res.set_content(html, "text/html");
+});
 
     svr.Post("/nuevoMenu", [&](const Request& req, Response& res) {
         
-        int codigo = 0;
+        
         string nombre = req.get_param_value("nombre");
         string categoria = req.get_param_value("categoria");
         int precio = stoi(req.get_param_value("precio"));
