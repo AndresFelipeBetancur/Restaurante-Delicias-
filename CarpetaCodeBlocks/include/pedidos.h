@@ -11,14 +11,23 @@ class Pedidos{
         Pedidos(){
             estado = true;
         }
+        Pedidos(int c, string n, string cat, int p, string d, bool e) {
+            codigo = c;
+            nombre = n;
+            categoria = cat;
+            precio = p;
+            descripcion = d;
+            estado = e;
+        }
 
     protected:
 
     private:
-        string cedula;
+        int codigo;
         string nombre;
-        string correo;
-        string contrasena;
+        string categoria;
+        int precio;
+        string descripcion;
         bool estado;  
 };
 #endif

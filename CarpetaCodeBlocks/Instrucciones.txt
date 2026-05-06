@@ -28,6 +28,7 @@ EN VISUAL STUDIO CODE
 -> agrega: C:\mingw64\bin
 
 1.Antes de ejecutar compilar con el comando: g++ main.cpp -o app -lws2_32
+1.1 si no les sirve el comando de arriba, usen este comando y luego siguen con el paso 2: g++ main.cpp -o app -lws2_32 -static
 2.Para ejecutar el programa se debe usar el comando: ./app
 3.Para visualizar la aplicacion en el navegador se debe ingresar al enlace: http://localhost:8080
 
