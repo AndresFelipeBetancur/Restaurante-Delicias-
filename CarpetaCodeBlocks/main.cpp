@@ -56,8 +56,175 @@ int main() {
 
         res.set_content("OK", "text/plain");
     });
+
     //RUTAS DE MENU ----------------------------------------------------
 
+    svr.Get("/visualizacionesM", [](const Request& req, Response& res) {
+        res.set_redirect("/visualizacionesM.html");
+    });
+
+    // RUTA VISUALIZAR ALIMENTO POR CODIGO
+    svr.Get("/verAlimento", [&](const Request& req, Response& res) {
+        string codigoStr = req.get_param_value("codigo");
+
+        string encabezado = "<tr>"
+                            "<th>Codigo</th>"
+                            "<th>Nombre</th>"
+                            "<th>Precio</th>"
+                            "<th>Descripcion</th>"
+                            "<th>Categoria</th>"
+                            "</tr>";
+
+        string html = "<h1 style='text-align:center;'>Buscar Alimento por Codigo</h1>";
+        html += "<table border='1' style='margin:auto; border-collapse:collapse;'>" + encabezado;
+
+        bool encontrado = false;
+        for (auto &m : productos) {
+            if (to_string(m.Getcodigo()) == codigoStr) {
+                html += "<tr>"
+                        "<td>" + to_string(m.Getcodigo()) + "</td>"
+                        "<td>" + m.Getnombre() + "</td>"
+                        "<td>$" + to_string(m.Getprecio()) + "</td>"
+                        "<td>" + m.Getdescripcion() + "</td>"
+                        "<td>" + m.Getcategoria() + "</td>"
+                        "</tr>";
+                encontrado = true;
+            }
+        }
+
+        if (!encontrado) {
+            html += "<tr><td colspan='5' style='text-align:center; padding:8px;'>No se encontro ningun alimento con ese codigo.</td></tr>";
+        }
+
+        html += "</table><br><br>";
+        html += "<div style='text-align:center; margin-top:20px;'>"
+                "<a href='/visualizacionesM'><button style='border: solid 3px; width:10%; height:70px;'>Regresar</button></a>"
+                "</div>";
+
+        res.set_content(html, "text/html");
+    });
+
+    // RUTA VISUALIZAR ACTIVIDAD DE UN ALIMENTO
+    svr.Get("/verActividadM", [&](const Request& req, Response& res) {
+        string codigoStr = req.get_param_value("codigo");
+
+        string encabezado = "<tr>"
+                            "<th>Codigo</th>"
+                            "<th>Nombre</th>"
+                            "<th>Precio</th>"
+                            "<th>Descripcion</th>"
+                            "<th>Categoria</th>"
+                            "</tr>";
+
+        string html = "<h1 style='text-align:center;'>Actividad del Alimento</h1>";
+        html += "<table border='1' style='margin:auto; border-collapse:collapse;'>" + encabezado;
+
+        bool encontrado = false;
+        for (auto &m : productos) {
+            if (to_string(m.Getcodigo()) == codigoStr) {
+                html += "<tr>"
+                        "<td>" + to_string(m.Getcodigo()) + "</td>"
+                        "<td>" + m.Getnombre() + "</td>"
+                        "<td>$" + to_string(m.Getprecio()) + "</td>"
+                        "<td>" + m.Getdescripcion() + "</td>"
+                        "<td>" + m.Getcategoria() + "</td>"
+                        "</tr>";
+                encontrado = true;
+                html += "</table><br>";
+                html += "<h2 style='text-align:center;'> Este alimento esta activo!</h2>";
+            }
+        }
+
+        if (!encontrado) {
+            html += "<tr><td colspan='5' style='text-align:center; padding:8px;'>No se encontro ningun alimento con ese codigo.</td></tr>";
+            html += "</table><br>";
+            html += "<h2 style='text-align:center;'> Este alimento no existe.</h2>";
+        }
+
+        html += "<div style='text-align:center; margin-top:20px;'>"
+                "<a href='/visualizacionesM'><button style='border: solid 3px; width:10%; height:70px;'>Regresar</button></a>"
+                "</div>";
+
+        res.set_content(html, "text/html");
+    });
+
+    // RUTA VISUALIZAR ALIMENTOS ACTIVOS E INACTIVOS
+    svr.Get("/verActivosM", [&](const Request& req, Response& res) {
+        string encabezado = "<tr>"
+                            "<th>Codigo</th>"
+                            "<th>Nombre</th>"
+                            "<th>Precio</th>"
+                            "<th>Descripcion</th>"
+                            "<th>Categoria</th>"
+                            "</tr>";
+
+        string html = "<h1 style='text-align:center;'>Alimentos Activos</h1>";
+
+        // COMIDAS
+        html += "<h2 style='text-align:center;'>Comidas</h2>";
+        html += "<table border='1' style='margin:auto; border-collapse:collapse;'>" + encabezado;
+        for (auto &m : productos) {
+            if (m.Getcategoria() == "Comida") {
+                html += "<tr>"
+                        "<td>" + to_string(m.Getcodigo()) + "</td>"
+                        "<td>" + m.Getnombre() + "</td>"
+                        "<td>$" + to_string(m.Getprecio()) + "</td>"
+                        "<td>" + m.Getdescripcion() + "</td>"
+                        "<td>" + m.Getcategoria() + "</td>"
+                        "</tr>";
+            }
+        }
+        html += "</table><br><br>";
+
+        // BEBIDAS
+        html += "<h2 style='text-align:center;'>Bebidas</h2>";
+        html += "<table border='1' style='margin:auto; border-collapse:collapse;'>" + encabezado;
+        for (auto &m : productos) {
+            if (m.Getcategoria() == "Bebida") {
+                html += "<tr>"
+                        "<td>" + to_string(m.Getcodigo()) + "</td>"
+                        "<td>" + m.Getnombre() + "</td>"
+                        "<td>$" + to_string(m.Getprecio()) + "</td>"
+                        "<td>" + m.Getdescripcion() + "</td>"
+                        "<td>" + m.Getcategoria() + "</td>"
+                        "</tr>";
+            }
+        }
+        html += "</table><br><br>";
+
+        // POSTRES
+        html += "<h2 style='text-align:center;'>Postres</h2>";
+        html += "<table border='1' style='margin:auto; border-collapse:collapse;'>" + encabezado;
+        for (auto &m : productos) {
+            if (m.Getcategoria() == "Postre") {
+                html += "<tr>"
+                        "<td>" + to_string(m.Getcodigo()) + "</td>"
+                        "<td>" + m.Getnombre() + "</td>"
+                        "<td>$" + to_string(m.Getprecio()) + "</td>"
+                        "<td>" + m.Getdescripcion() + "</td>"
+                        "<td>" + m.Getcategoria() + "</td>"
+                        "</tr>";
+            }
+        }
+        html += "</table><br><br>";
+
+        html += "<div style='text-align:center; margin-top:20px;'>"
+                "<a href='/visualizacionesM'><button style='border: solid 3px; width:10%; height:70px;'>Regresar</button></a>"
+                "</div>";
+
+        res.set_content(html, "text/html");
+    });
+
+    // RUTA VISUALIZAR ALIMENTOS INACTIVOS
+    svr.Get("/verInactivosM", [&](const Request& req, Response& res) {
+        string html = "<h1 style='text-align:center;'>Alimentos Inactivos</h1>";
+        html += "<p style='text-align:center;'>Actualmente no hay alimentos inactivos en el sistema.</p>";
+        html += "<div style='text-align:center; margin-top:20px;'>"
+                "<a href='/visualizacionesM'><button style='border: solid 3px; width:10%; height:70px;'>Regresar</button></a>"
+                "</div>";
+
+        res.set_content(html, "text/html");
+    });
 
     //RUTA VISUALIZAR menu
     svr.Get("/verMenu", [&](const Request& req, Response& res) {
@@ -121,7 +288,7 @@ int main() {
 
     // Botón regresar
     html += "<div style='text-align:center; margin-top:20px;'>"
-            "<a href='/menu'><button style='border: solid 3px; width:10%; height:70px;'>Regresar</button></a>"
+            "<a href='/visualizacionesM'><button style='border: solid 3px; width:10%; height:70px;'>Regresar</button></a>"
             "</div>";
 
     res.set_content(html, "text/html");

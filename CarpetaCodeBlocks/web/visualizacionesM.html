@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/admin.css">
+    <title>Visualizaciones Menu</title>
+</head>
+<body>
+    <h1>Visualizaciones Menu</h1>
+    <div id="botonesContainer">
+        <div id="contenedorInput">
+            <input type="text" id="cedula" placeholder="Ingresa el codigo del alimento">
+        </div>
+
+        <button class="visualizacionE" onclick="buscarPorCodigo()">
+            <h2 class="visualizacionT">Visualizar por codigo</h2>
+            <p class="visualizacionT">Visualiza la información de un alimento.</p>
+        </button>
+
+        <button class="visualizacionE" onclick="buscarActividadM()">
+            <h2 class="visualizacionT">Visualizar actividad de un alimento</h2>
+            <p class="visualizacionT">Valida la actividad de un alimento.</p>
+        </button>
+
+        <button class="visualizacionE" onclick="window.location.href='/verMenu'">
+            <h2 class="visualizacionT">Visualizar listado general</h2>
+            <p class="visualizacionT">Visualiza todos los alimentos del sistema.</p>
+        </button>
+
+        <button class="visualizacionE" onclick="window.location.href='/verActivosM'">
+            <h2 class="visualizacionT">Visualizar alimentos activos</h2>
+            <p class="visualizacionT">Visualiza todos los alimentos activos.</p>
+        </button>
+
+        <button class="visualizacionE" onclick="window.location.href='/verInactivosM'">
+            <h2 class="visualizacionT">Visualizar alimentos inactivos</h2>
+            <p class="visualizacionT">Visualiza todos los alimentos inactivos.</p>
+        </button>
+    </div>
+
+    <div id="contenedorBoton">
+        <button id="boton" onclick="window.location.href='/menu'">
+            <h2>Regresar</h2>
+        </button>
+    </div>
+
+    <script>
+        function buscarPorCodigo() {
+            const codigo = document.getElementById('cedula').value;
+            if (codigo.trim() === '') {
+                alert('Por favor ingresa un codigo.');
+                return;
+            }
+            window.location.href = '/verAlimento?codigo=' + codigo;
+        }
+
+        function buscarActividadM() {
+            const codigo = document.getElementById('cedula').value;
+            if (codigo.trim() === '') {
+                alert('Por favor ingresa un codigo.');
+                return;
+            }
+            window.location.href = '/verActividadM?codigo=' + codigo;
+        }
+    </script>
+</body>
+</html>

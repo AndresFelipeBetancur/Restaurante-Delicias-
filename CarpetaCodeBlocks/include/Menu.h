@@ -73,6 +73,14 @@ class Menu {
             descripcion = val;
         }
 
+        bool Getestado() {
+            return estado;
+        }
+
+        void Setestado(bool val) {
+            estado = val;
+        }
+
         //Otros metodos
         //Funcion Agregar Menu
         static bool agregarM(string nombre, string categoria, int precio,
