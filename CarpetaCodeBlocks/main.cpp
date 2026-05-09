@@ -1,9 +1,9 @@
 //Proyecto Restaurante Programacion Orientada a Objetos
 //Autores:
-//- Andres Felipe Betancur Quintero-202563100
-//- Juan Jose Garces Casas-202563114
-//- Juan Manuel Carvajal-202563167
-//- Nicolas Diaz Galeano-202563147
+//- Andres Felipe Betancur Quintero-202563100 - Programador lider
+//- Juan Jose Garces Casas-202563114 - Programador Auxiliar
+//- Juan Manuel Carvajal-202563167 - Programador Apoyo
+//- Nicolas Diaz Galeano-202563147 - Nicolas
 //Version: 2.7
 //Descripcion: Este proyecto es un sistema de gestion de restaurante,
 // el cual permite a los usuarios realizar pedidos,
