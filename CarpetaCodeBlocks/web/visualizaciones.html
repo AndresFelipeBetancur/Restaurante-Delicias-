@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/admin.css">
+    <title>Visualizaciones</title>
+</head>
+<body>
+    <h1>Visualizaciones</h1>
+    <div id="botonesContainer">
+        <div id="contenedorInput">
+            <input type="text" id="cedula" placeholder="Ingresa tu cedula">
+        </div>
+
+        <button class="visualizacionE" onclick="buscarPorCedula()">
+            <h2 class="visualizacionT">Visualizar empleado por cédula</h2>
+            <p class="visualizacionT">Visualiza la información de un empleado.</p>
+        </button>
+
+        <button class="visualizacionE" onclick="buscarActividad()">
+            <h2 class="visualizacionT">Visualizar actividad de un empleado</h2>
+            <p class="visualizacionT">Valida la actividad de un usuario.</p>
+        </button>
+
+        <button class="visualizacionE" onclick="window.location.href='/verUsuario'">
+            <h2 class="visualizacionT">Visualizar listado general</h2>
+            <p class="visualizacionT">Visualiza todos los empleados del sistema.</p>
+        </button>
+
+        <button class="visualizacionE" onclick="window.location.href='/verActivos'">
+            <h2 class="visualizacionT">Visualizar usuarios activos</h2>
+            <p class="visualizacionT">Visualiza todos los empleados activos.</p>
+        </button>
+
+        <button class="visualizacionE" onclick="window.location.href='/verInactivos'">
+            <h2 class="visualizacionT">Visualizar usuarios inactivos</h2>
+            <p class="visualizacionT">Visualiza todos los empleados inactivos.</p>
+        </button>
+    </div>
+
+    <div id="contenedorBoton">
+        <button id="boton" onclick="window.location.href='/administracion'">
+            <h2>Regresar</h2>
+        </button>
+    </div>
+
+    <script>
+        function buscarPorCedula() {
+            const cedula = document.getElementById('cedula').value;
+            if (cedula.trim() === '') {
+                alert('Por favor ingresa una cedula.');
+                return;
+            }
+            window.location.href = '/verEmpleado?cedula=' + cedula;
+        }
+
+        function buscarActividad() {
+            const cedula = document.getElementById('cedula').value;
+            if (cedula.trim() === '') {
+                alert('Por favor ingresa una cedula.');
+                return;
+            }
+            window.location.href = '/verActividad?cedula=' + cedula;
+        }
+    </script>
+</body>
+</html>

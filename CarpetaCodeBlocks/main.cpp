@@ -228,7 +228,123 @@ int main() {
     res.set_redirect("/eliminarU.html");
     });
 
-    //RUTA VISUALIZAR USUARIOS
+
+    svr.Get("/verUsuarios", [](const Request& req, Response& res) {
+    res.set_redirect("/visualizaciones.html");
+    });
+
+
+    // RUTA VISUALIZAR USUARIO POR CEDULA -----------------------------------------------------------
+    svr.Get("/verEmpleado", [&](const Request& req, Response& res) {
+        string cedula = req.get_param_value("cedula");
+
+        string html = "<h1 style='text-align:center;'>Buscar por Cedula</h1>"
+                "<table style='margin:auto; border:4px solid black; border-collapse:collapse;'>"
+                "<tr>"
+                "<th style='border:1px solid black; padding:8px;'>Cedula</th>"
+                "<th style='border:1px solid black; padding:8px;'>Nombre</th>"
+                "<th style='border:1px solid black; padding:8px;'>Correo</th>"
+                "<th style='border:1px solid black; padding:8px;'>Contrasena</th>"
+                "<th style='border:1px solid black; padding:8px;'>Estado</th>"
+                "</tr>";
+
+        bool encontrado = false;
+        for (auto& u : usuarios) {
+            if (u.Getcedula() == cedula) {
+                html += "<tr>"
+                        "<td style='border:1px solid black; padding:8px;'>" + u.Getcedula() + "</td>"
+                        "<td style='border:1px solid black; padding:8px;'>" + u.Getnombre() + "</td>"
+                        "<td style='border:1px solid black; padding:8px;'>" + u.Getcorreo() + "</td>"
+                        "<td style='border:1px solid black; padding:8px;'>" + u.Getcontrasena() + "</td>"
+                        "<td style='border:1px solid black; padding:8px;'>" + string(u.Getestado() ? "Activo" : "Inactivo") + "</td>"
+                        "</tr>";
+                encontrado = true;
+            }
+        }
+
+        if (!encontrado) {
+            html += "<tr><td colspan='5' style='text-align:center; padding:8px;'>No se encontro ningun usuario con esa cedula.</td></tr>";
+        }
+
+        html += "</table>";
+        html += "<div style='text-align:center; margin-top:20px;'>"
+                "<a href='/verUsuarios'>"
+                "<button style='border: solid 3px; width: 10%; height: 70px;'>Regresar</button>"
+                "</a>"
+                "</div>";
+
+        res.set_content(html, "text/html");
+    });
+
+    // RUTA VISUALIZAR USUARIOS ACTIVOS --------------------------------------------------------
+    svr.Get("/verActivos", [&](const Request& req, Response& res) {
+        string html = "<h1 style='text-align:center;'>Usuarios Activos</h1>"
+                "<table style='margin:auto; border:4px solid black; border-collapse:collapse;'>"
+                "<tr>"
+                "<th style='border:1px solid black; padding:8px;'>Cedula</th>"
+                "<th style='border:1px solid black; padding:8px;'>Nombre</th>"
+                "<th style='border:1px solid black; padding:8px;'>Correo</th>"
+                "<th style='border:1px solid black; padding:8px;'>Contrasena</th>"
+                "<th style='border:1px solid black; padding:8px;'>Estado</th>"
+                "</tr>";
+
+        for (auto& u : usuarios) {
+            if (u.Getestado()) {
+                html += "<tr>"
+                        "<td style='border:1px solid black; padding:8px;'>" + u.Getcedula() + "</td>"
+                        "<td style='border:1px solid black; padding:8px;'>" + u.Getnombre() + "</td>"
+                        "<td style='border:1px solid black; padding:8px;'>" + u.Getcorreo() + "</td>"
+                        "<td style='border:1px solid black; padding:8px;'>" + u.Getcontrasena() + "</td>"
+                        "<td style='border:1px solid black; padding:8px;'>Activo</td>"
+                        "</tr>";
+            }
+        }
+
+        html += "</table>";
+        html += "<div style='text-align:center; margin-top:20px;'>"
+                "<a href='/verUsuarios'>"
+                "<button style='border: solid 3px; width: 10%; height: 70px;'>Regresar</button>"
+                "</a>"
+                "</div>";
+
+        res.set_content(html, "text/html");
+    });
+
+    // RUTA VISUALIZAR USUARIOS INACTIVOS ---------------------------------------------------
+    svr.Get("/verInactivos", [&](const Request& req, Response& res) {
+        string html = "<h1 style='text-align:center;'>Usuarios Inactivos</h1>"
+                "<table style='margin:auto; border:4px solid black; border-collapse:collapse;'>"
+                "<tr>"
+                "<th style='border:1px solid black; padding:8px;'>Cedula</th>"
+                "<th style='border:1px solid black; padding:8px;'>Nombre</th>"
+                "<th style='border:1px solid black; padding:8px;'>Correo</th>"
+                "<th style='border:1px solid black; padding:8px;'>Contrasena</th>"
+                "<th style='border:1px solid black; padding:8px;'>Estado</th>"
+                "</tr>";
+
+        for (auto& u : usuarios) {
+            if (!u.Getestado()) {
+                html += "<tr>"
+                        "<td style='border:1px solid black; padding:8px;'>" + u.Getcedula() + "</td>"
+                        "<td style='border:1px solid black; padding:8px;'>" + u.Getnombre() + "</td>"
+                        "<td style='border:1px solid black; padding:8px;'>" + u.Getcorreo() + "</td>"
+                        "<td style='border:1px solid black; padding:8px;'>" + u.Getcontrasena() + "</td>"
+                        "<td style='border:1px solid black; padding:8px;'>Inactivo</td>"
+                        "</tr>";
+            }
+        }
+
+        html += "</table>";
+        html += "<div style='text-align:center; margin-top:20px;'>"
+                "<a href='/verUsuarios'>"
+                "<button style='border: solid 3px; width: 10%; height: 70px;'>Regresar</button>"
+                "</a>"
+                "</div>";
+
+        res.set_content(html, "text/html");
+    });
+
+    //RUTA VISUALIZAR USUARIOS GENERAL ---------------------------------------------------------------
     svr.Get("/verUsuario", [](const Request& req, Response& res) {
     string html = "<h1 style='text-align:center;'>Usuarios</h1>"
               "<table style='margin:auto; border:4px solid black; border-collapse:collapse;'>"
@@ -253,12 +369,55 @@ int main() {
     html += "</table>";
 
     html += "<div style='text-align:center; margin-top:20px;'>"
-        "<a href='/administracion'>"
+        "<a href='/verUsuarios'>"
         "<button style='border: solid 3px; width: 10%; height: 70px;'>Regresar</button>"
         "</a>"
         "</div>";
 
     res.set_content(html, "text/html"); 
+    });
+
+    // RUTA VISUALIZAR ACTIVIDAD DE UN EMPLEADO
+    svr.Get("/verActividad", [&](const Request& req, Response& res) {
+        string cedula = req.get_param_value("cedula");
+
+        string html = "<h1 style='text-align:center;'>Actividad del Empleado</h1>";
+
+        bool encontrado = false;
+        for (auto& u : usuarios) {
+            if (u.Getcedula() == cedula) {
+                encontrado = true;
+                html += "<table style='margin:auto; border:4px solid black; border-collapse:collapse;'>"
+                        "<tr>"
+                        "<th style='border:1px solid black; padding:8px;'>Cedula</th>"
+                        "<th style='border:1px solid black; padding:8px;'>Nombre</th>"
+                        "<th style='border:1px solid black; padding:8px;'>Correo</th>"
+                        "<th style='border:1px solid black; padding:8px;'>Estado</th>"
+                        "</tr>"
+                        "<tr>"
+                        "<td style='border:1px solid black; padding:8px;'>" + u.Getcedula() + "</td>"
+                        "<td style='border:1px solid black; padding:8px;'>" + u.Getnombre() + "</td>"
+                        "<td style='border:1px solid black; padding:8px;'>" + u.Getcorreo() + "</td>"
+                        "<td style='border:1px solid black; padding:8px;'>" + string(u.Getestado() ? "Activo" : "Inactivo") + "</td>"
+                        "</tr>"
+                        "</table>"
+                        "<h2 style='text-align:center; margin-top:20px;'>" +
+                        string(u.Getestado() ? "Este usuario esta activo!" : "Este usuario esta inactivo.") +
+                        "</h2>";
+            }
+        }
+
+        if (!encontrado) {
+            html += "<p style='text-align:center;'>No se encontro ningun usuario con esa cedula.</p>";
+        }
+
+        html += "<div style='text-align:center; margin-top:20px;'>"
+                "<a href='/verUsuarios'>"
+                "<button style='border: solid 3px; width: 10%; height: 70px;'>Regresar</button>"
+                "</a>"
+                "</div>";
+
+        res.set_content(html, "text/html");
     });
 
     //RUTAS PARA AGREGAR USUARIOS
