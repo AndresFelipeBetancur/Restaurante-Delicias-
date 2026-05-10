@@ -3,15 +3,32 @@
 <head>
     
     <title>Restaurante Ricuras</title>
-    <link rel="stylesheet" href="styles/empleados.css">
+    <link rel="stylesheet" href="styles/pedidos.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <header>
-             <title>Pedidos</title>
-    </header>
-    <main>
-         <h1>Pedidos</h1>
+    <h1>Pedidos</h1>
 
-    </main>
+    <form id="formulario" action="/" method="POST">
+        
+        <div class="contenedorEntradanumero">
+            <label for="codigo">Digite numero de su pedido.</label>
+            <input required type="text" name="codigo" placeholder="Ingrese codigo de mesa">
+        </div>
+        
+        <button type="submit">Ingresar</button>
+        
+    </form>
+
+    <form id="formulario" action="/" method="POST">
+        
+        <div class="contenedorEntradapedido">
+            <label for="codigo">Digite lo que desea pedir.</label>
+            <input required type="text" name="codigo" placeholder="Ingrese codigo de mesa">
+        </div>
+        
+        <button type="submit">Ingresar</button>
+        
+    </form>
+
 </body>
