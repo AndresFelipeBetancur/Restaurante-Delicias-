@@ -97,6 +97,26 @@ class Menu {
             return true;
         }
 
+        static bool BuscarCodigo(string id_buscar, vector<Menu>& productos) {
+        for(int i = 0; i < productos.size(); i++) {
+            if(std::to_string(productos[i].Getcodigo()) == id_buscar) {
+                return true;
+            }
+            return false;
+            }
+        }
+
+        //Eliminar menu
+        static bool eliminarMenu(string id_buscar, vector<Menu>& productos) {
+        for(int i = 0; i < productos.size(); i++) {
+            if(std::to_string(productos[i].Getcodigo()) == id_buscar) {
+                productos[i].Setestado(!productos[i].Getestado());
+                return true;
+                }
+            }
+            return false;
+        }
+
     protected:
 
     private:
