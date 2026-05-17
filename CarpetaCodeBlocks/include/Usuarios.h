@@ -1,3 +1,21 @@
+//Proyecto Restaurante Programacion Orientada a Objetos
+//Autores:
+//- Andres Felipe Betancur Quintero-202563100 - Programador lider
+//- Juan Jose Garces Casas-202563114 - Programador Auxiliar
+//- Juan Manuel Carvajal-202563167 - Programador Apoyo
+//- Nicolas Diaz Galeano-202563147 - Nicolas
+//Version: 2.7
+//Descripcion: La clase Usuarios representa la entidad principal
+//encargada de gestionar la información de los usuarios registrados
+//dentro del sistema de restaurante. Almacena datos básicos como
+//cédula, nombre, correo electrónico, contraseña y estado de actividad.
+//Además, implementa métodos para realizar operaciones fundamentales
+//del sistema como registrar usuarios, buscar usuarios por cédula, 
+//actualizar información, desactivar cuentas y validar el inicio de
+//sesión. Esta clase sirve como base para la administración y control
+//de acceso dentro de la aplicación.
+
+
 #ifndef USUARIOS_H
 #define USUARIOS_H
 #include <iostream>

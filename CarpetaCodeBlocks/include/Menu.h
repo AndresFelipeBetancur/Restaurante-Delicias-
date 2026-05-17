@@ -1,3 +1,19 @@
+//Proyecto Restaurante Programacion Orientada a Objetos
+//Autores:
+//- Andres Felipe Betancur Quintero-202563100 - Programador lider
+//- Juan Jose Garces Casas-202563114 - Programador Auxiliar
+//- Juan Manuel Carvajal-202563167 - Programador Apoyo
+//- Nicolas Diaz Galeano-202563147 - Nicolas
+//Version: 2.7
+/*
+Descripcion: La clase Menu representa los productos o platos disponibles dentro del sistema
+del restaurante. Se encarga de almacenar información como código, nombre, categoría, precio,
+descripción y estado de disponibilidad de cada producto. Además, implementa métodos para
+registrar nuevos elementos del menú, buscar productos por código, actualizar su información
+y realizar su eliminación lógica mediante el cambio de estado. Esta clase permite gestionar
+de manera organizada la oferta de productos del restaurante.
+*/
+
 #ifndef MENU_H
 #define MENU_H
 
@@ -102,8 +118,9 @@ class Menu {
             if(std::to_string(productos[i].Getcodigo()) == id_buscar) {
                 return true;
             }
-            return false;
+            
             }
+            return false;
         }
 
         //Eliminar menu
@@ -116,6 +133,22 @@ class Menu {
             }
             return false;
         }
+
+        static bool actualizarM(string id_buscar, string nuevoNombre, string nuevaCategoria, int nuevoPrecio, string nuevaDescripcion, vector<Menu>& productos) {
+        for(int i = 0; i < productos.size(); i++) {
+            if(std::to_string(productos[i].Getcodigo()) == id_buscar) {
+                
+                productos[i].Setnombre(nuevoNombre);
+                productos[i].Setcategoria(nuevaCategoria);
+                productos[i].Setprecio(nuevoPrecio);
+                productos[i].Setdescripcion(nuevaDescripcion);
+
+                return true;
+            }
+        }
+        return false;
+        }
+
 
     protected:
 

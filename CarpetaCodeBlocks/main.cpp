@@ -59,6 +59,29 @@ int main() {
 
     //RUTAS DE MENU ---------------------------------------------------------------------------------
 
+    //Ruta que recibe los datos actualizados de actualizarM.html y los envia al archivo Menu.h 
+    //Esto con el objetivo de modificar el vector con los nuevos datos.
+    svr.Post("/actualizarMenu", [&](const Request& req, Response& res) {
+        
+        string codigo = req.get_param_value("codigo");
+        string nombre = req.get_param_value("nombre");
+        string categoria = req.get_param_value("categoria");
+        int precio = std::stoi(req.get_param_value("precio"));
+        string descripcion = req.get_param_value("descripcion");
+        
+        if(Menu::BuscarCodigo(codigo,productos)) {
+            Menu::actualizarM(codigo,nombre,categoria,precio,descripcion, productos);
+            res.set_redirect("/menu?msg=Usuario+actualizado!");
+        } else {
+            res.set_redirect("/actualizarM.html?msg=Este+codigo+no+existe.");
+        }
+        
+    });
+
+    svr.Get("/actualizarM", [](const Request& req, Response& res) {
+        res.set_redirect("/actualizarM.html");
+    });
+
     //RUTAS PROCESO DE ELIMINAR / DESHABILITAR ALGO DEL MENU
     svr.Post("/eliminarMenu", [&](const Request& req, Response& res) {
     

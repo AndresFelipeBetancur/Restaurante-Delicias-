@@ -1,0 +1,55 @@
+¡Hola! en este docuemnto vas a encontrar informacion importante acerca de nuestra aplicacion.
+
+¿Como pongo en funcionamiento el programa?
+ -Revisar el archivo .txt llamado instrucciones, alli encontraras informacion fundamental
+  para poner en funcionamiento el aplicativo, despues de compilar con exito debes de abrir
+  tu navegador de preferencia e introducir el siguiente enlace: http://localhost:8080 
+  
+¿Que es el archivo httplib.h? 
+Ese archivo pertenece a cpp-httplib, una librería de C++ que permite crear servidores HTTP
+de forma sencilla.
+
+¿Para que sirve el archivo httplib.h?
+Es fundamental para:
+ -Levantar el servidor local.
+ -Manejar rutas.
+ -Recibir formularios HTML.
+ -Enviar respuestas al navegador.
+
+¿Que es? ¿Para que sirve la clase WebSocket?
+WebSocket es un protocolo de comunicación que mantiene una conexión persistente y bidireccional
+entre cliente y servidor en tiempo real.
+
+¿Que tipo de aplicación es? 
+No es el enfoque que se ha desarrollado a lo largo del curso.
+Es una aplicacion web, se realizo la propuesta en la segunda semana del curso, se aprobo y de
+inmediato nos pusimos a trabajar y aprender a manejar librerias web que cumplieran con el 
+requerimiento de funcionar correctamente en el editor code blocks.
+El enfoque que hemos mantenido es el mismo. Lo unico que hemos cambiado es la propuesta de que 
+la interfaz de la app sea una aplicacion web, puede verse como una aplicacion completamente
+extraña, llena de nuevas funciones y terminos, sin embargo hace parte de nuestra propuesta 
+de crear algo desafiante para nuestro aprendizaje.
+
+El sistema de información propuesto debe estar compuesto por al menos 5 entidades,
+que se representan por medio de clases.
+
+Esta compuesto por 5 entidades representadas por clases, las cuales son: 
+ -Facturas.
+ -Menu.
+ -Mesas.
+ -Pedidos.
+ -Usuarios.
+
+¿Por que las operaciones CRUD estan implementadas en las clases y no en el main.cpp?
+ -Porque las operaciones CRUD en el main haria que este archivo supere las 1500
+  lineas de codigo. En nuestro equipo de trabajo decidimos evitar la programacion monolítica.
+ -Porque hace mucho mas facil trabajar desde un enfoque de trabajo de git, donde cada uno 
+  de los integrantes de nuestro equipo de trabajo sabe donde debe implementar su codigo.
+
+
+Espacio designado para la documentacion:
+
+
+Cualquier duda, inquietud o sugerencia estaremos felices de atenderla.
+
+ATT Andres Felipe Betancur - Lider de desarrollo.

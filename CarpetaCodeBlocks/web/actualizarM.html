@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/actualizarU.css">
+    <title>Actualiza un elemnto del menu</title>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const msg = params.get("msg");
+
+        if (msg) {
+            alert(msg); 
+            window.history.replaceState({}, document.title, "/actualizarM.html");
+        }
+    </script>
+
+</head>
+<body>
+    <h1>Actualiza a un elemento.</h1>
+    
+
+    <form id="formulario" action="/actualizarMenu" method="POST">
+
+        
+        <div class="contenedorEntrada">
+            <label for="Identificacion"><b>Digite el codigo</b></label>
+            <input minlength="1" required type="text" name="codigo" placeholder="Ingrese el codigo.">
+        </div>
+
+
+        <div class="contenedorEntrada">
+            <label for="Identificacion"><b>Digite el nuevo nombre</b></label>
+            <input minlength="3" required type="text" name="nombre" placeholder="Ingrese el nuevo nombre del usuario.">
+        </div>
+
+        <div class="contenedorEntrada">
+            <label for="Identificacion"><b>Digite la nueva categoria</b></label>
+            <select required name="categoria" id="">
+                <option value="Comida">Comida</option>
+                <option value="Bebida">Bebida</option>
+                <option value="Postre">Postre</option>
+            </select>
+        </div>
+
+        <div class="contenedorEntrada">
+            <label for="Identificacion"><b>Digite el nuevo precio</b></label>
+            <input required type="number" name="precio" placeholder="Ingrese el nuevo precio.">
+        </div>
+
+         <div class="contenedorEntrada">
+            <label for="Identificacion"><b>Digite la nueva descripcion</b></label>
+            <input required type="text" name="descripcion" placeholder="Ingrese la nueva descripcion.">
+        </div>
+        
+
+        <button type="submit">Actualizar</button>
+        
+        
+    </form>
+
+    <div id="contenedorBoton">
+        <button id="boton" onclick="window.location.href='/menu'">
+            <h2>Regresar</h2>
+        </button>
+    </div>
+
+</body>
+</html>
